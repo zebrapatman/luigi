@@ -19,6 +19,16 @@
         <dt>Pikant</dt>
         <dd th:text="*{pikant} ? 'Ja' : 'Nee'"></dd>
     </dl>
+    <form method="post" th:action="@{/mandje/{id}(id=*{id})}">
+        <button>In mandje</button>
+    </form>
+    <form th:object="${pizza}" method="post" th:action="@{/pizzas/aantalpizzasperprijs}">
+        <input type="hidden" name="naam" th:value="*{naam}">
+        <input type="hidden" name="prijs" th:value="*{prijs}">
+        <input type="hidden" name="pikant" th:value="*{pikant}">
+        <input type="hidden" name="id" th:value="${id}">
+        <button>Verwijderen</button>
+    </form>
 </th:block>
 </body>
 </html>

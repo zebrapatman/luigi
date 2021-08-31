@@ -17,5 +17,8 @@
     <dd th:object="${zaakvoerder.adres}" th:text="|*{straat} *{huisNr} *{postcode} *{gemeente}|"></dd>
 </dl>
 <p>Aantal bezoeken: <th:block th:text="${aantalBezoeken}"></th:block>.</p>
+
+<p>waar staat het <!--/*@thymesVar id="identificatie" type="be.vdab.luigi.sessions.Identificatie"*/-->
+<th:block th:text="${identificatie.emailAdres}"></th:block></p>
 </body>
 </html>

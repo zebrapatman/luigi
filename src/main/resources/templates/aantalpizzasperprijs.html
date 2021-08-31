@@ -4,6 +4,7 @@
 <body>
 <nav th:replace="fragments::menu"></nav>
 <h1>Aantal pizza's per prijs</h1>
+<div th:if="${param.verwijderd}" class="boodschap">Pizza is verwijderd. Zijn naam:<th:block th:text="${param.verwijderd}"></th:block>.</div>
 <table id="aantalpizzasperprijs">
     <thead>
     <tr>

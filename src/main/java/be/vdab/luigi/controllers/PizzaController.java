@@ -83,12 +83,23 @@ class PizzaController {
     public ModelAndView toevoegenForm(){
         return new ModelAndView("toevoegen").addObject(new Pizza(0,"",null,false));
     }
+
     @PostMapping
     public String toevoegen(@Valid Pizza pizza, Errors error, RedirectAttributes redirect){
         if(error.hasErrors()){
-            return "toevoegen";
+            return "toevoegen/form";
         }
         redirect.addAttribute("idNieuwePizza",pizzaService.create(pizza));
         return "redirect:/pizzas/{idNieuwePizza}";
+    }
+
+    @PostMapping("aantalpizzasperprijs")
+    public String verwijderPizza(@Valid Pizza pizza, Errors errors, RedirectAttributes redirect){
+        if(errors.hasErrors()){
+            return "/pizzas";
+        }
+        pizzaService.delete(pizza.getId());
+        redirect.addAttribute("verwijderd",pizza.getNaam());
+        return "redirect:/pizzas/aantalpizzasperprijs";
     }
 }
